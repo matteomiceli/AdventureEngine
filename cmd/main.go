@@ -5,8 +5,8 @@ import (
 )
 
 func main() {
-	gameEnd := false
-	for !gameEnd {
+	gameOver := false
+	for !gameOver {
 		input := command.Input()
 		command.CommandController(input)
 	}

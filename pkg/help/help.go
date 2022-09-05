@@ -1,8 +1,8 @@
 package help
 
 func Lookup(cmd string) {
-
-	if cmd == "" {
+	switch cmd {
+	case "":
 		Default()
 	}
 }

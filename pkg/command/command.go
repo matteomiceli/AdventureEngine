@@ -27,10 +27,12 @@ func CommandController(input [2]string) {
 		inventory.Draw()
 
 	case "take":
-		if subject != "" {
-			// add to inventory
-			fmt.Printf("%s has been added to your inventory \n", color.PaintText(color.Yellow, subject))
+		if subject == "" {
+			fmt.Printf("The %s command requires a subject \n", color.PaintText(color.Yellow, "TAKE"))
+			break
 		}
+		// add to inventory
+		fmt.Printf("%s has been added to your inventory \n", color.PaintText(color.Yellow, subject))
 
 	case "help":
 		help.Lookup(subject)
