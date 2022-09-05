@@ -1,7 +1,7 @@
 package main
 
 import (
-	"saran/pkg/command"
+	"adventureengine/pkg/command"
 )
 
 func main() {

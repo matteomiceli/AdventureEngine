@@ -1,9 +1,9 @@
 package command
 
 import (
+	"adventureengine/pkg/color"
+	"adventureengine/pkg/inventory"
 	"fmt"
-	"saran/pkg/color"
-	"saran/pkg/inventory"
 	"strings"
 )
 
