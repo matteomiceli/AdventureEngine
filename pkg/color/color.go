@@ -28,5 +28,6 @@ func init() {
 		Cyan = ""
 		Gray = ""
 		White = ""
+		LightBlue = ""
 	}
 }

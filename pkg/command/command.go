@@ -2,6 +2,7 @@ package command
 
 import (
 	"adventureengine/pkg/color"
+	"adventureengine/pkg/help"
 	"adventureengine/pkg/inventory"
 	"fmt"
 	"strings"
@@ -24,10 +25,14 @@ func CommandController(input [2]string) {
 
 	case "inventory":
 		inventory.Draw()
+
 	case "take":
 		if subject != "" {
 			// add to inventory
 			fmt.Printf("%s has been added to your inventory \n", color.PaintText(color.Yellow, subject))
 		}
+
+	case "help":
+		help.Lookup(subject)
 	}
 }
