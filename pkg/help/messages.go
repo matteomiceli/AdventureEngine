@@ -24,6 +24,7 @@ List of valid commands:
 - drop
 - walk
 - hide
+- search
 
 `, color.PaintText(color.Yellow, "HELP"), color.PaintText(color.Yellow, "TAKE"))
 }

@@ -2,6 +2,7 @@ package command
 
 import (
 	"adventureengine/pkg/color"
+	"adventureengine/pkg/game"
 	"adventureengine/pkg/help"
 	"adventureengine/pkg/inventory"
 	"fmt"
@@ -36,5 +37,9 @@ func CommandController(input [2]string) {
 
 	case "help":
 		help.Lookup(subject)
+
+	case "walk":
+		game.Walk(subject)
 	}
+
 }
