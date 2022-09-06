@@ -1,21 +1,37 @@
 package inventory
 
-import "fmt"
+import (
+	"adventureengine/pkg/color"
+	"fmt"
+)
 
 type Item struct {
-	name string
+	Name string
 }
 
-var Store = make(map[string]Item)
-
-func Add(item Item) {
-	//
+var Store = map[string]Item{
+	"hack": {Name: "Hack"},
+	"name": {Name: "Test"},
+	"":     {Name: ""},
 }
 
 func Draw() {
-	Store["Hack"] = Item{name: "Hack"}
-	Store["Test"] = Item{name: "Test"}
 	for _, element := range Store {
-		fmt.Println(element.name)
+		fmt.Println(element.Name)
+	}
+}
+
+func Add(object string) {
+	if len(Store) >= 3 {
+		fmt.Printf("Inventory full, please %s an item before trying to pick up something else. \n", color.PaintText(color.Yellow, "DROP"))
+	}
+	// if object does not exist in list of items in room, return
+
+	for _, element := range Store {
+		if element.Name != "" {
+
+		}
+
+		fmt.Println(element)
 	}
 }

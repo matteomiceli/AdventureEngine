@@ -5,6 +5,7 @@ import (
 	"adventureengine/pkg/game"
 	"adventureengine/pkg/help"
 	"adventureengine/pkg/inventory"
+	"adventureengine/state"
 	"fmt"
 	"strings"
 )
@@ -12,7 +13,7 @@ import (
 func Input() [2]string {
 	var cmd string
 	var subject string
-	fmt.Print(color.PaintText(color.Cyan, "[Dark Cellar] --> "))
+	fmt.Printf(color.PaintText(color.Cyan, "[location: %s] --> "), state.CurrentLocation.Name)
 	fmt.Scanln(&cmd, &subject)
 
 	return [2]string{cmd, subject}
@@ -33,7 +34,8 @@ func CommandController(input [2]string) {
 			break
 		}
 		// add to inventory
-		fmt.Printf("%s has been added to your inventory \n", color.PaintText(color.Yellow, subject))
+		inventory.Add(subject)
+		// fmt.Printf("%s has been added to your inventory \n", color.PaintText(color.Yellow, subject))
 
 	case "help":
 		help.Lookup(subject)
