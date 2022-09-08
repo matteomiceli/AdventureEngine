@@ -37,6 +37,9 @@ func CommandController(input [2]string) {
 		inventory.Add(subject)
 		// fmt.Printf("%s has been added to your inventory \n", color.PaintText(color.Yellow, subject))
 
+	case "drop":
+		inventory.Drop(subject)
+
 	case "help":
 		help.Lookup(subject)
 
