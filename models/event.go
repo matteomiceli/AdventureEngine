@@ -1,4 +1,4 @@
-package game
+package models
 
 type Event struct {
 	cmd    string

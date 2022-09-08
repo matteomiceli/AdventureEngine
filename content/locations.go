@@ -1,16 +1,13 @@
 package content
 
-import (
-	"adventureengine/pkg/game"
-	"adventureengine/pkg/inventory"
-)
+import "adventureengine/models"
 
-var Locations = map[string]game.Location{
+var Locations = map[string]models.Location{
 	"test": {
 		Id:      "test",
 		Message: "",
-		Events:  []game.Event{},
-		GoTo:    game.GoTo{},
-		Items:   []inventory.Item{},
+		Events:  []models.Event{},
+		GoTo:    models.GoTo{},
+		Items:   []models.Item{},
 	},
 }
