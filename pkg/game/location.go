@@ -2,12 +2,11 @@ package game
 
 import (
 	"adventureengine/pkg/inventory"
-	"adventureengine/state"
 	"fmt"
 )
 
 type Location struct {
-	Name    string
+	Id      string
 	Message string
 	Events  []Event
 	GoTo    GoTo
@@ -16,15 +15,27 @@ type Location struct {
 
 type GoTo map[string]string
 
+var CurrentLocation Location = Location{
+	Id:      "start",
+	Message: "You arrive at the start of your journey!",
+	Events: []Event{
+		{},
+	},
+	GoTo: goTo,
+	Items: []inventory.Item{
+		{Name: "Test"},
+	},
+}
+
 var goTo = GoTo{
 	"left":  "solarium",
 	"right": "sanctum",
 }
 
 func Walk(direction string) {
-	if state.CurrentLocation.GoTo[direction] == "" {
+	if CurrentLocation.GoTo[direction] == "" {
 		fmt.Println("nothing here.")
 		return
 	}
-	fmt.Println(state.CurrentLocation.GoTo[direction])
+	fmt.Println(CurrentLocation.GoTo[direction])
 }

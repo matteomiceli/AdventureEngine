@@ -5,7 +5,6 @@ import (
 	"adventureengine/pkg/game"
 	"adventureengine/pkg/help"
 	"adventureengine/pkg/inventory"
-	"adventureengine/state"
 	"fmt"
 	"strings"
 )
@@ -13,7 +12,7 @@ import (
 func Input() [2]string {
 	var cmd string
 	var subject string
-	fmt.Printf(color.PaintText(color.Cyan, "[location: %s] --> "), state.CurrentLocation.Name)
+	fmt.Printf(color.PaintText(color.Cyan, "[location: %s] --> "), game.CurrentLocation.Id)
 	fmt.Scanln(&cmd, &subject)
 
 	return [2]string{cmd, subject}
