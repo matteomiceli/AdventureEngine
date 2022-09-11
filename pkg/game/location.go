@@ -12,14 +12,14 @@ func Walk(direction string) {
 		return
 	}
 
-	current := content.Locations[state.CurrentLocation]
+	current := content.Locations[state.CurrentLocationId]
 
 	if _, ok := current.GoTo[direction]; !ok {
 		fmt.Println("There doesn't appear to be anything here.")
 		return
 	}
-	state.CurrentLocation = current.GoTo[direction]
-	fmt.Println(content.Locations[state.CurrentLocation].Message)
+	state.CurrentLocationId = current.GoTo[direction]
+	fmt.Println(content.Locations[state.CurrentLocationId].Message)
 }
 
 func isValidDirection(direction string) bool {

@@ -1,6 +1,6 @@
 package state
 
-var CurrentLocation string = "grandEntrance"
+var CurrentLocationId string = "grandEntrance"
 
 var Store = [3]string{
 	"test",

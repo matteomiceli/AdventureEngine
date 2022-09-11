@@ -14,7 +14,7 @@ import (
 func Input() [2]string {
 	var cmd string
 	var subject string
-	fmt.Printf(color.PaintText(color.Cyan, "[%s] --> "), content.Locations[state.CurrentLocation].Display)
+	fmt.Printf(color.PaintText(color.Cyan, "[%s] --> "), content.Locations[state.CurrentLocationId].Display)
 	fmt.Scanln(&cmd, &subject)
 
 	return [2]string{cmd, subject}
