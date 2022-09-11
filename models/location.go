@@ -2,6 +2,7 @@ package models
 
 type Location struct {
 	Id      string
+	Display string
 	Message string
 	Events  []Event
 	GoTo    GoTo
