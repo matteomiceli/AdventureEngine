@@ -2,9 +2,14 @@ package game
 
 import (
 	"adventureengine/content"
+	"adventureengine/models"
 	"adventureengine/state"
 	"fmt"
 )
+
+func CurrentLocation() models.Location {
+	return content.Locations[state.CurrentLocationId]
+}
 
 func Walk(direction string) {
 	if !isValidDirection(direction) {
@@ -12,14 +17,14 @@ func Walk(direction string) {
 		return
 	}
 
-	current := content.Locations[state.CurrentLocationId]
+	current := CurrentLocation()
 
 	if _, ok := current.GoTo[direction]; !ok {
 		fmt.Println("There doesn't appear to be anything here.")
 		return
 	}
 	state.CurrentLocationId = current.GoTo[direction]
-	fmt.Println(content.Locations[state.CurrentLocationId].Message)
+	fmt.Println(CurrentLocation().Message)
 }
 
 func isValidDirection(direction string) bool {

@@ -1,7 +1,9 @@
 package inventory
 
 import (
+	"adventureengine/helpers"
 	"adventureengine/pkg/color"
+	"adventureengine/pkg/game"
 	"adventureengine/state"
 	"fmt"
 	"strings"
@@ -17,6 +19,10 @@ func Draw() {
 }
 
 func Add(object string) {
+	if !helpers.LocationContainsItem(object, game.CurrentLocation().Items) {
+		fmt.Printf("%s not found in room. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
+		return
+	}
 	isFull := true
 	for i, element := range state.Store {
 		if element == object {
@@ -36,9 +42,14 @@ func Add(object string) {
 }
 
 func Drop(object string) {
-	found := true
+	if object == "" {
+		fmt.Printf("Select an object from your inventory to %s \n", color.PaintText(color.Yellow, strings.ToUpper("DROP")))
+		return
+	}
+	found := false
 	for i, element := range state.Store {
 		if element == object {
+			found = true
 			state.Store[i] = ""
 			fmt.Printf("%s dropped. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 			return
