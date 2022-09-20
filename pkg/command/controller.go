@@ -50,5 +50,24 @@ func CommandController(input [2]string) {
 
 func drawPrompt() {
 	fmt.Println()
-	fmt.Printf(color.PaintText(color.Cyan, "[%s] ->> "), content.Locations[state.CurrentLocationId].Display)
+	fmt.Printf(color.PaintText(color.Cyan, "[%s]%s%s %s "), content.Locations[state.CurrentLocationId].Display, drawHealth(), drawShields(), color.PaintText(color.Yellow, ">>"))
+}
+
+func drawHealth() string {
+	healthIcon := ""
+	for i := 0; i < state.Health; i++ {
+		healthIcon = healthIcon + "♥"
+	}
+	for i := 0; i < 3-state.Health; i++ {
+		healthIcon = healthIcon + "♡"
+	}
+	return color.PaintText(color.Red, healthIcon)
+}
+
+func drawShields() string {
+	shieldIcon := ""
+	for i := 0; i < state.Shield; i++ {
+		shieldIcon = shieldIcon + "⛨"
+	}
+	return shieldIcon
 }

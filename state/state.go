@@ -7,3 +7,6 @@ var Store = [3]string{
 	"hack",
 	"",
 }
+
+var Health = 3
+var Shield = 2
