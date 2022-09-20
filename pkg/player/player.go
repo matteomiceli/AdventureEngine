@@ -9,3 +9,11 @@ func IncrementHealth() {
 func DecrementHealth() {
 	state.Health--
 }
+
+func IncrementShields() {
+	state.Shield++
+}
+
+func DecrementShields() {
+	state.Shield--
+}
