@@ -8,4 +8,8 @@ var Items = map[string]models.Item{
 	"lighter": {
 		Id: "lighter",
 	},
+	"potion": {
+		Id:     "potion",
+		Consumable: ,
+	},
 }

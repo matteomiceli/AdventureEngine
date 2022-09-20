@@ -9,4 +9,4 @@ var Store = [3]string{
 }
 
 var Health = 3
-var Shield = 2
+var Shield = 0

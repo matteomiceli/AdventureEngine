@@ -1,6 +1,7 @@
 package inventory
 
 import (
+	"adventureengine/content"
 	"adventureengine/helpers"
 	"adventureengine/pkg/color"
 	"adventureengine/pkg/game"
@@ -50,12 +51,37 @@ func Drop(object string) {
 	for i, element := range state.Store {
 		if element == object {
 			found = true
-			state.Store[i] = ""
 			fmt.Printf("%s dropped. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
+			state.Store[i] = ""
 			return
 		}
 	}
 	if !found {
 		fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 	}
+}
+
+func Eat(object string) {
+	if object == "" {
+		fmt.Printf("Select an object from your inventory to %s \n", color.PaintText(color.Yellow, strings.ToUpper("EAT")))
+		return
+	}
+
+	found := false
+	for i, element := range state.Store {
+		if element == object {
+			found = true
+			foundItem := content.Items[state.Store[i]]
+			if foundItem.Eat != nil {
+
+				fmt.Printf("%s consumed. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
+				state.Store[i] = ""
+				return
+			}
+		}
+	}
+	if !found {
+		fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
+	}
+
 }

@@ -39,13 +39,15 @@ func CommandController(input [2]string) {
 	case "drop":
 		inventory.Drop(subject)
 
-	case "help":
-		help.Lookup(subject)
+	case "eat":
+		inventory.Eat(subject)
 
 	case "walk":
 		game.Walk(subject)
-	}
 
+	case "help":
+		help.Lookup(subject)
+	}
 }
 
 func drawPrompt() {
