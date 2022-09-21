@@ -2,18 +2,18 @@ package player
 
 import "adventureengine/state"
 
-func IncrementHealth() {
-	state.Health++
+func IncrementHealth(val int) {
+	state.Health = state.Health + val
 }
 
-func DecrementHealth() {
-	state.Health--
+func DecrementHealth(val int) {
+	state.Health = state.Health - val
 }
 
-func IncrementShields() {
-	state.Shield++
+func IncrementShields(val int) {
+	state.Shield = state.Shield + val
 }
 
-func DecrementShields() {
-	state.Shield--
+func DecrementShields(val int) {
+	state.Shield = state.Shield - val
 }

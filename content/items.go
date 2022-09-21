@@ -9,7 +9,8 @@ var Items = map[string]models.Item{
 		Id: "lighter",
 	},
 	"potion": {
-		Id:     "potion",
-		Consumable: ,
+		Id:         "potion",
+		Consumable: true,
+		Health:     2,
 	},
 }

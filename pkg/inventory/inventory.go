@@ -5,6 +5,7 @@ import (
 	"adventureengine/helpers"
 	"adventureengine/pkg/color"
 	"adventureengine/pkg/game"
+	"adventureengine/pkg/player"
 	"adventureengine/state"
 	"fmt"
 	"strings"
@@ -47,18 +48,14 @@ func Drop(object string) {
 		fmt.Printf("Select an object from your inventory to %s \n", color.PaintText(color.Yellow, strings.ToUpper("DROP")))
 		return
 	}
-	found := false
 	for i, element := range state.Store {
 		if element == object {
-			found = true
 			fmt.Printf("%s dropped. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 			state.Store[i] = ""
 			return
 		}
 	}
-	if !found {
-		fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
-	}
+	fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 }
 
 func Eat(object string) {
@@ -67,21 +64,29 @@ func Eat(object string) {
 		return
 	}
 
-	found := false
 	for i, element := range state.Store {
 		if element == object {
-			found = true
 			foundItem := content.Items[state.Store[i]]
-			if foundItem.Eat != nil {
 
-				fmt.Printf("%s consumed. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
-				state.Store[i] = ""
+			if !foundItem.Consumable {
+				fmt.Printf("%s cannot be consumed. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 				return
 			}
+			player.IncrementHealth(foundItem.Health)
+			fmt.Printf("%s consumed. Health %s by %v. \n", color.PaintText(color.Yellow, strings.ToUpper(object)), normalizeIntValueToLang(foundItem.Health), foundItem.Health)
+			state.Store[i] = ""
+			return
 		}
 	}
-	if !found {
-		fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
-	}
 
+	fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
+}
+
+func normalizeIntValueToLang(val int) string {
+	if val > 0 {
+		return "increased"
+	} else if val < 0 {
+		return "decreased"
+	}
+	return "no change"
 }

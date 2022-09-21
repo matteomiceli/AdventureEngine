@@ -6,5 +6,6 @@ type Edible struct {
 
 type Item struct {
 	Id         string
-	Consumable Edible
+	Consumable bool
+	Health     int
 }
