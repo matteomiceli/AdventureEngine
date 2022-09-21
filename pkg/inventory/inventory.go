@@ -21,7 +21,7 @@ func Draw() {
 
 func Add(object string) {
 	if !helpers.LocationContainsItem(object, game.CurrentLocation().Items) {
-		fmt.Printf("%s not found in room. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
+		fmt.Printf("%s not found nearby. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 		return
 	}
 	isFull := true
