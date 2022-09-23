@@ -58,9 +58,9 @@ func Drop(object string) {
 	fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 }
 
-func Eat(object string) {
+func Consume(object string) {
 	if object == "" {
-		fmt.Printf("Select an object from your inventory to %s \n", color.PaintText(color.Yellow, strings.ToUpper("EAT")))
+		fmt.Printf("Select an object from your inventory to %s \n", color.PaintText(color.Yellow, strings.ToUpper("consume")))
 		return
 	}
 
@@ -73,7 +73,7 @@ func Eat(object string) {
 				return
 			}
 			player.IncrementHealth(foundItem.Health)
-			fmt.Printf("%s consumed. Health %s by %v. \n", color.PaintText(color.Yellow, strings.ToUpper(object)), normalizeIntValueToLang(foundItem.Health), foundItem.Health)
+			fmt.Printf("%s consumed. %s %v health. \n", color.PaintText(color.Yellow, strings.ToUpper(object)), normalizeIntValueToHumanReadable(foundItem.Health), foundItem.Health)
 			state.Store[i] = ""
 			return
 		}
@@ -82,11 +82,11 @@ func Eat(object string) {
 	fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 }
 
-func normalizeIntValueToLang(val int) string {
+func normalizeIntValueToHumanReadable(val int) string {
 	if val > 0 {
-		return "increased"
+		return "Gained"
 	} else if val < 0 {
-		return "decreased"
+		return "Lost"
 	}
-	return "no change"
+	return ""
 }

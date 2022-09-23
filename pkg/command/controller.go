@@ -39,8 +39,8 @@ func CommandController(input [2]string) {
 	case "drop":
 		inventory.Drop(subject)
 
-	case "eat":
-		inventory.Eat(subject)
+	case "consume":
+		inventory.Consume(subject)
 
 	case "walk":
 		game.Walk(subject)

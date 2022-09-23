@@ -23,6 +23,7 @@ List of valid commands:
 - take 
 - drop
 - walk
+- consume
 - hide
 - search
 
