@@ -1,10 +1,10 @@
 package content
 
 import (
-	"adventureengine/models"
+	"adventureengine/model"
 )
 
-var Items = map[string]models.Item{
+var Items = map[string]model.Item{
 	"lighter": {
 		Id: "lighter",
 	},

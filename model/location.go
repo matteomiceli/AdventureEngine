@@ -1,4 +1,4 @@
-package models
+package model
 
 type Location struct {
 	Id      string

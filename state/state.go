@@ -1,5 +1,7 @@
 package state
 
+import "adventureengine/model"
+
 var CurrentLocationId string = "grandEntrance"
 
 var Store = [3]string{
@@ -8,5 +10,7 @@ var Store = [3]string{
 	"",
 }
 
-var Health = 3
-var Shield = 0
+var Player model.Player = model.Player{
+	Health: 3,
+	Shield: 1,
+}

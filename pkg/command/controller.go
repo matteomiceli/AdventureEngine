@@ -57,10 +57,10 @@ func drawPrompt() {
 
 func drawHealth() string {
 	healthIcon := ""
-	for i := 0; i < state.Health; i++ {
+	for i := 0; i < state.Player.Health; i++ {
 		healthIcon = healthIcon + "♥"
 	}
-	for i := 0; i < 3-state.Health; i++ {
+	for i := 0; i < 3-state.Player.Health; i++ {
 		healthIcon = healthIcon + "♡"
 	}
 	return color.PaintText(color.Red, healthIcon)
@@ -68,7 +68,7 @@ func drawHealth() string {
 
 func drawShields() string {
 	shieldIcon := ""
-	for i := 0; i < state.Shield; i++ {
+	for i := 0; i < state.Player.Shield; i++ {
 		shieldIcon = shieldIcon + "⛨"
 	}
 	return shieldIcon

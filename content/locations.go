@@ -1,48 +1,48 @@
 package content
 
-import "adventureengine/models"
+import "adventureengine/model"
 
-var Locations = map[string]models.Location{
+var Locations = map[string]model.Location{
 	"grandEntrance": {
 		Id:      "grandEntrance",
 		Display: "Grand Entrance",
 		Message: "Welcome to the game",
-		Events:  []models.Event{},
-		GoTo: models.GoTo{
+		Events:  []model.Event{},
+		GoTo: model.GoTo{
 			"left":    "closet",
 			"right":   "sittingRoom",
 			"forward": "diningRoom",
 		},
-		Items: []models.Item{},
+		Items: []model.Item{},
 	},
 	"closet": {
 		Id:      "closet",
 		Display: "Closet",
 		Message: "You enter the closet...",
-		Events:  []models.Event{},
-		GoTo: models.GoTo{
+		Events:  []model.Event{},
+		GoTo: model.GoTo{
 			"back": "grandEntrance",
 		},
-		Items: []models.Item{},
+		Items: []model.Item{},
 	},
 	"sittingRoom": {
 		Id:      "sittingRoom",
 		Display: "Sitting Room",
 		Message: "You enter the sitting room...",
-		Events:  []models.Event{},
-		GoTo: models.GoTo{
+		Events:  []model.Event{},
+		GoTo: model.GoTo{
 			"back": "grandEntrance",
 		},
-		Items: []models.Item{},
+		Items: []model.Item{},
 	},
 	"diningRoom": {
 		Id:      "diningRoom",
 		Display: "Dining Room",
 		Message: "You enter the dining room...",
-		Events:  []models.Event{},
-		GoTo: models.GoTo{
+		Events:  []model.Event{},
+		GoTo: model.GoTo{
 			"back": "grandEntrance",
 		},
-		Items: []models.Item{},
+		Items: []model.Item{},
 	},
 }

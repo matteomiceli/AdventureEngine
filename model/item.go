@@ -1,4 +1,4 @@
-package models
+package model
 
 type Edible struct {
 	CanEat bool

@@ -2,12 +2,12 @@ package game
 
 import (
 	"adventureengine/content"
-	"adventureengine/models"
+	"adventureengine/model"
 	"adventureengine/state"
 	"fmt"
 )
 
-func CurrentLocation() models.Location {
+func CurrentLocation() model.Location {
 	return content.Locations[state.CurrentLocationId]
 }
 

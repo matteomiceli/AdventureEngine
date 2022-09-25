@@ -1,11 +1,11 @@
 package helpers
 
 import (
-	"adventureengine/models"
+	"adventureengine/model"
 	"fmt"
 )
 
-func LocationContainsItem(object string, items []models.Item) bool {
+func LocationContainsItem(object string, items []model.Item) bool {
 	for i, item := range items {
 		fmt.Print(i, item)
 		if object == item.Id {

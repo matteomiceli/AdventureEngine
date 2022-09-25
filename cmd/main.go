@@ -8,6 +8,7 @@ import (
 func main() {
 	helpers.ClearScreen()
 	gameOver := false
+	helpers.PrintIntro()
 	for !gameOver {
 		input := command.Input()
 		command.CommandController(input)
