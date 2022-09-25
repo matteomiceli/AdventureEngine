@@ -1,11 +1,9 @@
 package model
 
-type Edible struct {
-	CanEat bool
-}
-
 type Item struct {
 	Id         string
+	Display    string
+	Message    string
 	Consumable bool
 	Health     int
 }

@@ -27,7 +27,7 @@ func CommandController(input [2]string) {
 	switch cmd {
 
 	case "inventory":
-		inventory.Draw()
+		inventory.DrawItems(state.Store[:])
 
 	case "take":
 		inventory.Add(subject)

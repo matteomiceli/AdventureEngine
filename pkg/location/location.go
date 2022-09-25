@@ -17,18 +17,16 @@ func Walk(direction string) {
 		return
 	}
 
-	current := CurrentLocation()
-
-	if _, ok := current.GoTo[direction]; !ok {
+	if _, ok := CurrentLocation().GoTo[direction]; !ok {
 		fmt.Println("There doesn't appear to be anything here.")
 		return
 	}
-	state.CurrentLocationId = current.GoTo[direction]
+	state.CurrentLocationId = CurrentLocation().GoTo[direction]
 	fmt.Println(CurrentLocation().Message)
 }
 
 func isValidDirection(direction string) bool {
-	if direction == "left" || direction == "right" || direction == "back" || direction == "forward" {
+	if direction == "left" || direction == "right" || direction == "back" || direction == "forward" || direction == "l" || direction == "r" || direction == "b" || direction == "f" {
 		return true
 	}
 	return false

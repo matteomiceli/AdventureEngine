@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func Draw() {
+func DrawItems(items []string) {
 	for _, element := range state.Store {
 		if element == "" {
 			break
@@ -40,7 +40,6 @@ func Add(object string) {
 			location.PickUpItem(location.CurrentLocation().Id, object)
 			isFull = false
 			fmt.Printf("%s added to inventory! \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
-			fmt.Println(location.CurrentLocation().Items)
 			return
 		}
 	}
@@ -59,7 +58,6 @@ func Drop(object string) {
 			fmt.Printf("%s dropped. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 			state.Store[i] = ""
 			location.DropItem(location.CurrentLocation().Id, object)
-			fmt.Print(location.CurrentLocation().Items)
 			return
 		}
 	}
