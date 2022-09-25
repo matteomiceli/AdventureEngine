@@ -3,9 +3,9 @@ package command
 import (
 	"adventureengine/content"
 	"adventureengine/pkg/color"
-	"adventureengine/pkg/game"
 	"adventureengine/pkg/help"
 	"adventureengine/pkg/inventory"
+	"adventureengine/pkg/location"
 	"adventureengine/state"
 	"fmt"
 	"strings"
@@ -30,10 +30,6 @@ func CommandController(input [2]string) {
 		inventory.Draw()
 
 	case "take":
-		if subject == "" {
-			fmt.Printf("The %s command requires a subject \n", color.PaintText(color.Yellow, "TAKE"))
-			break
-		}
 		inventory.Add(subject)
 
 	case "drop":
@@ -43,7 +39,7 @@ func CommandController(input [2]string) {
 		inventory.Consume(subject)
 
 	case "walk":
-		game.Walk(subject)
+		location.Walk(subject)
 
 	case "help":
 		help.Lookup(subject)

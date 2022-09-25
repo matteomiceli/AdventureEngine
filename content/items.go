@@ -4,7 +4,7 @@ import (
 	"adventureengine/model"
 )
 
-var Items = map[string]model.Item{
+var Items = map[string]*model.Item{
 	"lighter": {
 		Id: "lighter",
 	},

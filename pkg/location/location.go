@@ -1,4 +1,4 @@
-package game
+package location
 
 import (
 	"adventureengine/content"
@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-func CurrentLocation() model.Location {
+func CurrentLocation() *model.Location {
 	return content.Locations[state.CurrentLocationId]
 }
 
@@ -32,4 +32,21 @@ func isValidDirection(direction string) bool {
 		return true
 	}
 	return false
+}
+
+func DropItem(locationID string, object string) {
+	items := content.Locations[locationID].Items
+	content.Locations[locationID].Items = append(items, object)
+}
+
+func PickUpItem(locationID string, object string) {
+	itemsInLocation := content.Locations[locationID].Items
+	var itemIndex int
+	for i, item := range itemsInLocation {
+		if item == object {
+			itemIndex = i
+		}
+	}
+
+	content.Locations[locationID].Items = append(itemsInLocation[:itemIndex], itemsInLocation[itemIndex+1:]...)
 }

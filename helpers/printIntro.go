@@ -1,10 +1,10 @@
 package helpers
 
 import (
-	"adventureengine/pkg/game"
+	"adventureengine/pkg/location"
 	"fmt"
 )
 
 func PrintIntro() {
-	fmt.Println(game.CurrentLocation().Message)
+	fmt.Println(location.CurrentLocation().Message)
 }

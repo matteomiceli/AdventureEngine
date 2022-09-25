@@ -4,7 +4,7 @@ import (
 	"adventureengine/content"
 	"adventureengine/helpers"
 	"adventureengine/pkg/color"
-	"adventureengine/pkg/game"
+	"adventureengine/pkg/location"
 	"adventureengine/pkg/player"
 	"adventureengine/state"
 	"fmt"
@@ -21,7 +21,11 @@ func Draw() {
 }
 
 func Add(object string) {
-	if !helpers.LocationContainsItem(object, game.CurrentLocation().Items) {
+	if object == "" {
+		fmt.Printf("The %s command requires a subject \n", color.PaintText(color.Yellow, "TAKE"))
+		return
+	}
+	if !helpers.LocationContainsItem(object, location.CurrentLocation().Items) {
 		fmt.Printf("%s not found nearby. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 		return
 	}
@@ -33,8 +37,10 @@ func Add(object string) {
 		}
 		if element == "" {
 			state.Store[i] = object
+			location.PickUpItem(location.CurrentLocation().Id, object)
 			isFull = false
 			fmt.Printf("%s added to inventory! \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
+			fmt.Println(location.CurrentLocation().Items)
 			return
 		}
 	}
@@ -52,6 +58,8 @@ func Drop(object string) {
 		if element == object {
 			fmt.Printf("%s dropped. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 			state.Store[i] = ""
+			location.DropItem(location.CurrentLocation().Id, object)
+			fmt.Print(location.CurrentLocation().Items)
 			return
 		}
 	}

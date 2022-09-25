@@ -6,7 +6,7 @@ type Location struct {
 	Message string
 	Events  []Event
 	GoTo    GoTo
-	Items   []Item
+	Items   []string
 }
 
 type GoTo map[string]string

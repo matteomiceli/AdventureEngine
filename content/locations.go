@@ -2,7 +2,7 @@ package content
 
 import "adventureengine/model"
 
-var Locations = map[string]model.Location{
+var Locations = map[string]*model.Location{
 	"grandEntrance": {
 		Id:      "grandEntrance",
 		Display: "Grand Entrance",
@@ -13,7 +13,9 @@ var Locations = map[string]model.Location{
 			"right":   "sittingRoom",
 			"forward": "diningRoom",
 		},
-		Items: []model.Item{},
+		Items: []string{
+			"taco",
+		},
 	},
 	"closet": {
 		Id:      "closet",
@@ -23,7 +25,7 @@ var Locations = map[string]model.Location{
 		GoTo: model.GoTo{
 			"back": "grandEntrance",
 		},
-		Items: []model.Item{},
+		Items: []string{},
 	},
 	"sittingRoom": {
 		Id:      "sittingRoom",
@@ -33,7 +35,7 @@ var Locations = map[string]model.Location{
 		GoTo: model.GoTo{
 			"back": "grandEntrance",
 		},
-		Items: []model.Item{},
+		Items: []string{},
 	},
 	"diningRoom": {
 		Id:      "diningRoom",
@@ -43,6 +45,6 @@ var Locations = map[string]model.Location{
 		GoTo: model.GoTo{
 			"back": "grandEntrance",
 		},
-		Items: []model.Item{},
+		Items: []string{},
 	},
 }
