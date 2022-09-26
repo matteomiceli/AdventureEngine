@@ -1,15 +1,9 @@
 package location
 
 import (
-	"adventureengine/content"
-	"adventureengine/model"
 	"adventureengine/state"
 	"fmt"
 )
-
-func CurrentLocation() *model.Location {
-	return content.Locations[state.CurrentLocationId]
-}
 
 func Walk(direction string) {
 	if !isValidDirection(direction) {
@@ -17,12 +11,12 @@ func Walk(direction string) {
 		return
 	}
 
-	if _, ok := CurrentLocation().GoTo[direction]; !ok {
+	if _, ok := state.CurrentLocation().GoTo[direction]; !ok {
 		fmt.Println("There doesn't appear to be anything here.")
 		return
 	}
-	state.CurrentLocationId = CurrentLocation().GoTo[direction]
-	fmt.Println(CurrentLocation().Message)
+	state.CurrentLocationId = state.CurrentLocation().GoTo[direction]
+	fmt.Println(state.CurrentLocation().Message)
 }
 
 func isValidDirection(direction string) bool {
@@ -32,19 +26,6 @@ func isValidDirection(direction string) bool {
 	return false
 }
 
-func DropItem(locationID string, object string) {
-	items := content.Locations[locationID].Items
-	content.Locations[locationID].Items = append(items, object)
-}
-
-func PickUpItem(locationID string, object string) {
-	itemsInLocation := content.Locations[locationID].Items
-	var itemIndex int
-	for i, item := range itemsInLocation {
-		if item == object {
-			itemIndex = i
-		}
-	}
-
-	content.Locations[locationID].Items = append(itemsInLocation[:itemIndex], itemsInLocation[itemIndex+1:]...)
+func Search() {
+	fmt.Println()
 }

@@ -4,28 +4,18 @@ import (
 	"adventureengine/content"
 	"adventureengine/helpers"
 	"adventureengine/pkg/color"
-	"adventureengine/pkg/location"
 	"adventureengine/pkg/player"
 	"adventureengine/state"
 	"fmt"
 	"strings"
 )
 
-func DrawItems(items []string) {
-	for _, element := range state.Store {
-		if element == "" {
-			break
-		}
-		fmt.Println(element)
-	}
-}
-
 func Add(object string) {
 	if object == "" {
 		fmt.Printf("The %s command requires a subject \n", color.PaintText(color.Yellow, "TAKE"))
 		return
 	}
-	if !helpers.LocationContainsItem(object, location.CurrentLocation().Items) {
+	if !helpers.LocationContainsItem(object, state.CurrentLocation().Items) {
 		fmt.Printf("%s not found nearby. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 		return
 	}
@@ -37,7 +27,7 @@ func Add(object string) {
 		}
 		if element == "" {
 			state.Store[i] = object
-			location.PickUpItem(location.CurrentLocation().Id, object)
+			RemoveItemFromLocation(state.CurrentLocation().Id, object)
 			isFull = false
 			fmt.Printf("%s added to inventory! \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 			return
@@ -57,11 +47,28 @@ func Drop(object string) {
 		if element == object {
 			fmt.Printf("%s dropped. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
 			state.Store[i] = ""
-			location.DropItem(location.CurrentLocation().Id, object)
+			AddItemToLocation(state.CurrentLocation().Id, object)
 			return
 		}
 	}
 	fmt.Printf("You are not carrying a %s. \n", color.PaintText(color.Yellow, strings.ToUpper(object)))
+}
+
+func AddItemToLocation(locationID string, object string) {
+	items := content.Locations[locationID].Items
+	content.Locations[locationID].Items = append(items, object)
+}
+
+func RemoveItemFromLocation(locationID string, object string) {
+	itemsInLocation := content.Locations[locationID].Items
+	var itemIndex int
+	for i, item := range itemsInLocation {
+		if item == object {
+			itemIndex = i
+		}
+	}
+
+	content.Locations[locationID].Items = append(itemsInLocation[:itemIndex], itemsInLocation[itemIndex+1:]...)
 }
 
 func Consume(object string) {

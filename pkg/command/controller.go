@@ -2,6 +2,7 @@ package command
 
 import (
 	"adventureengine/content"
+	"adventureengine/helpers"
 	"adventureengine/pkg/color"
 	"adventureengine/pkg/help"
 	"adventureengine/pkg/inventory"
@@ -27,7 +28,7 @@ func CommandController(input [2]string) {
 	switch cmd {
 
 	case "inventory":
-		inventory.DrawItems(state.Store[:])
+		helpers.DrawItems(state.Store[:])
 
 	case "take":
 		inventory.Add(subject)
@@ -37,6 +38,8 @@ func CommandController(input [2]string) {
 
 	case "consume":
 		inventory.Consume(subject)
+
+	case "search":
 
 	case "walk":
 		location.Walk(subject)
