@@ -28,8 +28,6 @@ func isValidDirection(direction string) bool {
 }
 
 func Search() {
-	fmt.Println(state.CurrentLocation().Message + "\n")
-
 	if len(state.CurrentLocation().Items) == 0 {
 		fmt.Println("No items found nearby.")
 		return
