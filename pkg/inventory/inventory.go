@@ -10,6 +10,11 @@ import (
 	"strings"
 )
 
+func DrawInventory() {
+	fmt.Println("You are carrying the following:")
+	helpers.DrawItems(state.Store[:])
+}
+
 func Add(object string) {
 	if object == "" {
 		fmt.Printf("The %s command requires a subject \n", color.PaintText(color.Yellow, "TAKE"))
