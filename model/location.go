@@ -7,6 +7,12 @@ type Location struct {
 	Events  []Event
 	GoTo    GoTo
 	Items   []string
+	Door    Door
 }
 
 type GoTo map[string]string
+
+type Door struct {
+	Locked bool
+	Key    string
+}

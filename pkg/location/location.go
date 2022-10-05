@@ -16,7 +16,21 @@ func Walk(direction string) {
 		fmt.Println("There doesn't appear to be anything here.")
 		return
 	}
+
 	state.CurrentLocationId = state.CurrentLocation().GoTo[direction]
+	handleDoor()
+}
+
+func handleDoor() {
+	if state.CurrentLocation().Door.Locked {
+		if !helpers.InventoryHasItem(state.CurrentLocation().Door.Key) {
+			state.CurrentLocation().Id = state.CurrentLocation().GoTo["back"]
+			fmt.Println("This door is locked.")
+			return
+		}
+		fmt.Println("This door is locked, but you have the key!")
+		state.CurrentLocation().Door.Locked = false
+	}
 	fmt.Println(state.CurrentLocation().Message)
 }
 

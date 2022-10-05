@@ -13,9 +13,7 @@ var Locations = map[string]*model.Location{
 			"right":   "sittingRoom",
 			"forward": "diningRoom",
 		},
-		Items: []string{
-			"taco",
-		},
+		Items: []string{},
 	},
 	"closet": {
 		Id:      "closet",
@@ -26,6 +24,10 @@ var Locations = map[string]*model.Location{
 			"back": "grandEntrance",
 		},
 		Items: []string{},
+		Door: model.Door{
+			Locked: true,
+			Key:    "key",
+		},
 	},
 	"sittingRoom": {
 		Id:      "sittingRoom",
@@ -45,6 +47,8 @@ var Locations = map[string]*model.Location{
 		GoTo: model.GoTo{
 			"back": "grandEntrance",
 		},
-		Items: []string{},
+		Items: []string{
+			"key",
+		},
 	},
 }
