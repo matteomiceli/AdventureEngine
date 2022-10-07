@@ -41,8 +41,8 @@ func CommandController(input [2]string) {
 	case "search":
 		location.Search()
 
-	case "walk":
-		location.Walk(subject)
+	case "go":
+		location.Go(subject)
 
 	case "help":
 		help.Lookup(subject)

@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-func Walk(direction string) {
+func Go(direction string) {
 	if !isValidDirection(direction) {
 		fmt.Println("Enter a valid direction.")
 		return
@@ -24,11 +24,11 @@ func Walk(direction string) {
 func handleDoor() {
 	if state.CurrentLocation().Door.Locked {
 		if !helpers.InventoryHasItem(state.CurrentLocation().Door.Key) {
-			state.CurrentLocation().Id = state.CurrentLocation().GoTo["back"]
-			fmt.Println("This door is locked.")
+			state.CurrentLocationId = state.CurrentLocation().GoTo["back"]
+			fmt.Println("This door appears to be locked.")
 			return
 		}
-		fmt.Println("This door is locked, but you have the key!")
+		fmt.Printf("You use the %s to unlock the door! \n", state.CurrentLocation().Door.Key)
 		state.CurrentLocation().Door.Locked = false
 	}
 	fmt.Println(state.CurrentLocation().Message)

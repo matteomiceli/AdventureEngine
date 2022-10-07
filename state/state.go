@@ -5,6 +5,7 @@ import (
 	"adventureengine/model"
 )
 
+// starting location
 var CurrentLocationId string = "grandEntrance"
 
 func CurrentLocation() *model.Location {
